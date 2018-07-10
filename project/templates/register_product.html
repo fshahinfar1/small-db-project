@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Login/Signup{% endblock %}
+{% block content %}
+  <div class="center_box">
+    <form style="border: solid black 3px;" class="login"
+    action="{{url_for('register_product')}}" method="post">
+      <fieldset>
+        <legend>
+          Product
+        </legend>
+        <input type="text" placeholder="title" name="title"/>
+        <input type="date" placeholder="date" name="productiondate"/>
+        <input type="text" placeholder="company" name="company"/>
+        <select name="kind" style="margin: 0.2em 1em;">
+          <option value="00000000">clothes</option>
+          <option value="00000100">mobile/tablet</option>
+        </select>
+        <input type="text" placeholder="buyingprice" name="buyingprice"/>
+        <input type="text" placeholder="sellingprice" name="sellingprice"/>
+        <input type="number" placeholder="id" name="id"/>
+        <input type="submit" value="create" />
+      </fieldset>
+    </form>
+  </div>
+{% endblock %}

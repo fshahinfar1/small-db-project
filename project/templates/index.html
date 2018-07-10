@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block content %}
+  <div>
+    <h3>List of Our products</h3>
+    <div class="center_box">
+      <table class="myTable" style="border: solid black 3px;">
+        <thead>
+          <th>
+            Title
+          </th>
+          <th>
+            Selling Price
+          </th>
+          <th>
+            kind
+          </th>
+        </thead>
+        <tbody>
+          {%for product in products%}
+            <tr>
+              <td>{{product.title}}</td>
+              <td>
+                {{product.sellingprice}}
+              </td>
+              <td>
+                {{product.kind}}
+              </td>
+            </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div>
+    <h3>authors</h3>
+    <div class="center_box">
+      <table class="myTable" style="border: solid black 3px;">
+        <thead>
+          <th>
+            First Name
+          </th>
+          <th>
+            Last Name
+          </th>
+        </thead>
+        <tbody>
+          {%for author in authors%}
+            <tr>
+              <td>{{author.firstname}}</td>
+              <td>
+                {{author.lastname}}
+              </td>
+            </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+  </div>
+<script>
+  $(document).ready( function () {
+    $('.myTable').DataTable();
+  } );
+</script>
+{% endblock %}

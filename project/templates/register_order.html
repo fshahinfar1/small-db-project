@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %}Login/Signup{% endblock %}
+{% block content %}
+  <div class="center_box">
+    <form id='register_form' style="border: solid black 3px;" class="login"
+    action="{{url_for('register_order')}}" method="post" enctype='application/json'>
+      <fieldset>
+        <legend>
+          Product
+        </legend>
+        <input type="number" placeholder="customerid" name="customerid"/>
+        <input type="number" placeholder="id" name="id"/>
+        <input type="number" placeholder="cost" name="cost"/>
+        <input type="datetime-local" placeholder="registerdate" name="registerdate"/>
+        <input type="number" placeholder="customeraddressid" name="customeraddressid"/>
+        <!-- <input type="number" placeholder="deliverymanid" name="deliverymanid"/> -->
+        <input type="submit" value="create" />
+      </fieldset>
+    </form>
+  </div>
+  <br /><br />
+  <div class="center_box">
+    <table class="myTable" style="border: solid black 3px;">
+      <thead>
+        <th>
+          Title
+        </th>
+        <th>
+          Selling Price
+        </th>
+        <th>
+          kind
+        </th>
+      </thead>
+      <tbody>
+        {%for product in products%}
+          <tr onclick="addProduct({{product.id}})" style="cursor: pointer">
+            <td>{{product.title}}</td>
+            <td>
+              {{product.sellingprice}}
+            </td>
+            <td>
+              {{product.kind}}
+            </td>
+          </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+  <script>
+    selected_item = []
+    $(document).ready( function () {
+      $('.myTable').DataTable();
+    } );
+    function addProduct(id){
+      console.log('addProduct'+id);
+      selected_item.push(id);
+    }
+    $("#register_form").submit( function(eventObj) {
+      for (i in selected_item){
+        $('<input type="hidden">').attr({
+          name: 'selected_item[]',
+          value: i
+        }).appendTo(this);
+        console.log('656+  '+i);
+      }
+      console.log(selected_item);
+      // $(this).append(selected_item);
+      // return true;
+    });
+  </script>
+{% endblock %}

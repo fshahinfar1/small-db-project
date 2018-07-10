@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Login/Signup{% endblock %}
+{% block content %}
+  <div class="center_box">
+    <form style="border: solid black 3px;" class="login" action="{{url_for('login_signup')}}" method="post">
+      <fieldset>
+        <legend>
+          Signup
+        </legend>
+        <input type="text" placeholder="first name" name="first_name"/>
+        <input type="text" placeholder="last name" name="last_name"/>
+        <input type="text" placeholder="username" name="username"/>
+        <input type="password" placeholder="password" name="password"/>
+        <input type="submit" value="signup" />
+      </fieldset>
+    </form>
+  </div>
+{% endblock %}
